@@ -32,6 +32,21 @@ There are two b0s in the DWI data. For ExploreDTI to work they both need to be a
 
 Your images are now ready for the next step, which is to register the Atlas to each individual monkeys brain.
 
+### Second step - register Atlas to Monkey space
 
+The code to run these steps, as well as more precise infomation and parameters are located in the script/ notebook called 'Register Atlas to Monkey Native Space'
 
+1. Extract the b0's from your ExploreDTI-ready DWI images.
+2. Flirt the Atlas b0's to your individual monkeys b0's that you just extracted. Use the -omat flat to save the transformation matrix.
+3. Flirt the transformation matrix from the last stage to move the Atlas labels image to each individual monkeys space. 
+4. Manually check your images to make sure that the atlas labels are where they should be. 
+
+### Third step - extract your ROIs
+
+The code for extracting ROIs for one, or all, of your subjects is in the script 'extract_ROIs.py'. This can be run directly from the command line. A guide to using this script will be placed below. Help can also be accessed by using the -h or -help flag. 
+
+*What does the script do?*
+
+* Briefly, you give the script the directories of the subjects you want to extract from, the full paths to native-space registered Atlas labels images  , a digit that correspondes to the ROI you want to extract (e.g 3), 
+1. 
 
