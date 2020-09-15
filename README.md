@@ -43,7 +43,7 @@ The code to run these steps, as well as more precise infomation and parameters a
 
 ### Third step - extract your ROIs
 
-The code for extracting ROIs for one, or all, of your subjects is in the script 'extract_ROIs.py'. A short guide on how to run it can be accessed directly from the command line by typing [python3 extract_ROIs.py -h]
+The code for extracting ROIs for one, or all, of your subjects is in the script 'extract_ROIs.py'. A short guide on how to run it can be accessed directly from the command line by typing <python3 extract_ROIs.py -h>
 
 *Briefly, what does the script do?*
 
