@@ -1,4 +1,7 @@
 # Analyse Monkey Brain Tracts
+
+### Note - this is currently incomplete
+
 Notebooks and scripts for the tractography analysis of monkey MRI data.
 
 This repository should serve as a record and guide for how to use non-human primate MRI images to analyse structural connections between regions using the (insert name of atlas) atlas. Created by Sam Berry and Dr. Mark Postans at Cardiff University. 
