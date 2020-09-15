@@ -1,7 +1,7 @@
 # Analyse Monkey Brain Tracts
 Notebooks and scripts for the tractography analysis of the BST - Subiculum in monkey MRI data.
 
-This repository should serve as a record for how to use non-human primate MRI images to analyse structural connections between regions using the (insert name of atlas) atlas. 
+This repository should serve as a record for how to use non-human primate MRI images to analyse structural connections between regions using the (insert name of atlas) atlas. Created by Sam Berry and Dr. Mark Postans at Cardiff University. 
 
 ### Dataset information
 
@@ -28,7 +28,7 @@ There are two b0s in the DWI data. For ExploreDTI to work they both need to be a
 5. Open ExploreDTI and use the ExploreDTI plugin ‘Shuffle/select 3D volume(s) in 4D *.nii file(s)’ to reorder the b0 images to the beginning. All the b0 images are in the same place for every monkey, so you can use the sequence: 1 66 2:65 67:130 for all. 
 6. Now use the ExploreDTI plugin ‘Convert …*.bval/*.bvec to B-matrix *.txt file(s)’, to generate a bmatrix based on the bval and bvec files.
 7. Use the ExploreDTI plugin “Flip/permute dimensions in 3D/4D *.nii file(s)”, to make the images ExploreDTI friendly and avoid problems with flipping of axes. 
-8. Use the 'Convert raw data to DTI *.mat' tool to convert the nifti image and corresponding bmatrix to a dti .mat file. There are a number of parameters to set here. The image labeled DTI-to-mat.img contains some appropriate default parameters.
+8. Use the 'Convert raw data to DTI *.mat' tool to convert the nifti image and corresponding bmatrix to a dti .mat file. There are a number of parameters to set here. The image labeled DTI-to-mat.img contains some appropriate default parameters. Double check these images by clicking Data/load_dti.mat in ExploreDTI.
 
 Your images are now ready for the next step, which is to register the Atlas to each individual monkeys brain.
 
@@ -47,9 +47,11 @@ The code for extracting ROIs for one, or all, of your subjects is in the script 
 
 *Briefly, what does the script do?*
 
-Give the script the path to the files of the subject-space Atlases, a digit that correspondes to the ROI you want to extract (e.g 3), and an output name to idnetify your extracted region (e.g Hippocampus), and it will extract the ROI and place a mask back into the respective subj folder. You can provide a path to a single file, a .txt list of files with each path on a new line, or a glob search string to find all relevent files. Check the flags and appropriate input format using the -h or -help flag.
+Give the script the path to the files of the subject-space Atlases, a digit that correspondes to the ROI you want to extract (e.g 3), and an output name to idnetify your extracted region (e.g Hippocampus), and it will extract the ROI and place a binary .nii mask back into the respective subj folder. You can provide a path to a single file, a .txt list of files with each path on a new line, or a glob search string to find all relevent files. Check the flags and appropriate input format using the -h or -help flag. 
+
+The digits that correspond to the appropriate ROI's are listed in the file 'atlas/atlas_labels.txt'.
 
 
+### Fourth step - run the tractography.
 
-
-
+Once you have extracted the appropriate ROI's, you can open matlab and run the script 'tractography_through_masks'. A GUI will pop-up and you will be asked to select the .mat DWI file, two masks to track through, and an optional NOT mask. You will then be asked to provide some parameters, some decent starting default options are provided in the image 'tractography_params.png'. Once completed, you can load these tracts in ExploreDTI by clicking Data/ Load fiber tracts, then opening Palette/ Draw and then clicking 'Analyse Tracts' and finally 'Draw Tracts'. More information on ExploreDTI can be found in the manual, located [here](http://www.exploredti.com/manual/Manual_ExploreDTI.pdf). 
