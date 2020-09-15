@@ -43,10 +43,13 @@ The code to run these steps, as well as more precise infomation and parameters a
 
 ### Third step - extract your ROIs
 
-The code for extracting ROIs for one, or all, of your subjects is in the script 'extract_ROIs.py'. This can be run directly from the command line. A guide to using this script will be placed below. Help can also be accessed by using the -h or -help flag. 
+The code for extracting ROIs for one, or all, of your subjects is in the script 'extract_ROIs.py'. A short guide on how to run it can be accessed directly from the command line by typing [python3 extract_ROIs.py -h]
 
-*What does the script do?*
+*Briefly, what does the script do?*
 
-* Briefly, you give the script the directories of the subjects you want to extract from, the full paths to native-space registered Atlas labels images  , a digit that correspondes to the ROI you want to extract (e.g 3), 
-1. 
+Give the script the path to the files of the subject-space Atlases, a digit that correspondes to the ROI you want to extract (e.g 3), and an output name to idnetify your extracted region (e.g Hippocampus), and it will extract the ROI and place a mask back into the respective subj folder. You can provide a path to a single file, a .txt list of files with each path on a new line, or a glob search string to find all relevent files. Check the flags and appropriate input format using the -h or -help flag.
+
+
+
+
 
