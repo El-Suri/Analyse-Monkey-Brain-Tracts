@@ -53,17 +53,23 @@ def extract_roi(args,list_of_files,roi,output):
         cmd = 'fslmaths ' + list_of_files + ' -thr ' + roi + ' -uthr ' + roi + ' -bin ' + list_of_files[0:-8] + output
         print(cmd)
         os.system(cmd)
+        unzip = 'gunzip ' + file[0:-8] + output + '.nii.gz'
+        os.system(unzip)
     elif args.list:
         for counter, ignore in enumerate(list_of_files):
             file = str(list_of_files[counter][0])
             cmd = 'fslmaths ' + file + ' -thr ' + roi + ' -uthr ' + roi + ' -bin ' + file[0:-7] + output 
             print(cmd)
             os.system(cmd)
+            unzip = 'gunzip ' + file[0:-7] + output + '.nii.gz'
+            os.system(unzip)
     else:
         for file in list_of_files:
             cmd = 'fslmaths ' + file + ' -thr ' + roi + ' -uthr ' + roi + ' -bin ' + file[0:-7] + output 
             print(cmd)
             os.system(cmd)
+            unzip = 'gunzip ' + file[0:-7] + output + '.nii.gz'
+            os.system(unzip)
     print(' ')
     print('Completed')
 
