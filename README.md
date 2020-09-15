@@ -1,6 +1,6 @@
 # Analyse Monkey Brain Tracts
 
-### Note - this is currently incomplete
+### Note - this repository is currently under construction.
 
 Notebooks and scripts for the tractography analysis of monkey MRI data.
 
