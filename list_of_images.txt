@@ -1,0 +1,9 @@
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-01/dwi/sub-01_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-02/dwi/sub-02_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-03/dwi/sub-03_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-04/dwi/sub-04_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-05/dwi/sub-05_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-06/dwi/sub-06_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-07/dwi/sub-07_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-08/dwi/sub-08_registered_labels.nii.gz
+/cubric/data/c1639425/Monkey_Brains/derivatives/sub-09/dwi/sub-09_registered_labels.nii.gz
