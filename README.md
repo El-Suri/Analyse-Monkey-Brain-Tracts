@@ -2,28 +2,33 @@
 
 Notebooks and scripts for the tractography analysis of monkey MRI data.
 
-This repository should serve as a record and guide for how to use non-human primate MRI images to analyse structural connections between regions using the (insert name of atlas) atlas. Created by Sam Berry and Dr. Mark Postans at Cardiff University. 
+This repository should serve as a record and guide for how to use non-human primate MRI images to analyse structural connections between regions using the [Calabrese et al](https://doi.org/10.1016/j.neuroimage.2015.05.072) atlas. Created by Sam Berry and Dr. Mark Postans at Cardiff University. 
 
 ### Dataset information
 
-9 Non-human primates (insert species here) were downloaded from the (insert repo)
+9 rhesus macaque monkey (macaca mulatta) datasets were downloaded from the Mount Sinai School of Medicine repo on [Primate Data Exchange](http://fcon_1000.projects.nitrc.org/indi/PRIME/mssm1.html)
 
 The dataset includes:
 
-* T1w 7T structural images (input acqusition info)
-* Diffusion weighted images (insert aqusition info)
+* T1w & T2w 7T structural images 
+* Diffusion weighted images 
+* Resting state fMRI
 
-The atlas was generated using data from * and was downloaded from **
+Procedures and scanning parameters can be found on the repo website. 
+
+The atlas used was created by Calabrese et al and was generated using data from 10 post-mortem rhesus monkeys. The atlas can be downloaded from https://www.civm.duhs.duke.edu/rhesusatlas
+
+Imaging data provided by the Duke Center for In Vivo Microscopy NIH/NIBIB (P41 EB015897).
 
 ### First steps - get images ready for the ExploreDTI software
 
-The images come pre-processed (see above for info), however there are a few more steps before they are ready for ExploreDTI - the software we are using to analyse the tracts. The code to complete the steps below is contained in the notebook "Prepare_brains_for_ExploreDTI.ipynb"
+The images come pre-processed (see repo for info), however there are a few more steps before they are ready for ExploreDTI - the software we are using to analyse the tracts. The code to complete the steps below is contained in the notebook "Prepare_brains_for_ExploreDTI.ipynb"
 
 1. Extract a b0 (no diffusion) image from the DWI data using fslroi 
 2. Run brain extraction on the extracted B0 images using FSL BET, using the -m option to save a binary mask
 3. Multiply the binary masks with the DWI images using fslmaths to remove the skull
 
-There are two b0s in the DWI data. For ExploreDTI to work they both need to be at the front, which is not the case. Therefore, the below steps deal with this issue.
+There are two b0s in the DWI data. For ExploreDTI to work they both need to be at the front, which is not the case here. Therefore, the below steps deal with this issue.
 
 4. Change the bvec and bval files so that the data associated with the b0 images is at the front. The b0 images can be found where the bval file has values of 0. This index position is used to move the appropriate data from the 3 dimensions of the bvec files to the front. (This is done in the notebook)
 5. Open ExploreDTI and use the ExploreDTI plugin ‘Shuffle/select 3D volume(s) in 4D *.nii file(s)’ to reorder the b0 images to the beginning. All the b0 images are in the same place for every monkey, so you can use the sequence: 1 66 2:65 67:130 for all. 
@@ -38,7 +43,7 @@ Your images are now ready for the next step, which is to register the Atlas to e
 The code to run these steps, as well as more precise infomation and parameters are located in the script/ notebook called 'Register Atlas to Monkey Native Space'
 
 1. Extract the b0's from your ExploreDTI-ready DWI images.
-2. Flirt the Atlas b0's to your individual monkeys b0's that you just extracted. Use the -omat flat to save the transformation matrix.
+2. Flirt the Atlas b0's to your individual monkeys b0's that you just extracted. Use the -omat flag to save the transformation matrix.
 3. Flirt the transformation matrix from the last stage to move the Atlas labels image to each individual monkeys space. 
 4. Manually check your images to make sure that the atlas labels are where they should be. 
 
@@ -48,11 +53,20 @@ The code for extracting ROIs for one, or all, of your subjects is in the script 
 
 *Briefly, what does the script do?*
 
-Give the script the path to the files of the subject-space Atlases, a digit that correspondes to the ROI you want to extract (e.g 3), and an output name to idnetify your extracted region (e.g Hippocampus), and it will extract the ROI and place a binary .nii mask back into the respective subj folder. You can provide a path to a single file, a .txt list of files with each path on a new line, or a glob search string to find all relevent files. Check the flags and appropriate input format using the -h or -help flag. 
+Give the script the path to the files of the subject-space Atlases, a digit that correspondes to the ROI you want to extract (e.g 3), and an output name to identify your extracted region (e.g Hippocampus), and it will extract the ROI and place a binary .nii mask back into the respective subj folder. You can provide a path to a single file, a .txt list of files with each path on a new line, or a glob search string to find all relevent files. Check the flags and appropriate input format using the -h or -help flag. 
 
 The digits that correspond to the appropriate ROI's are listed in the file 'atlas/atlas_labels.txt'.
 
 
-### Fourth step - run the tractography.
+## Conduct Deterministic Tractography
 
 Once you have extracted the appropriate ROI's, you can open matlab and run the script 'tractography_through_masks'. A GUI will pop-up and you will be asked to select the .mat DWI file, two masks to track through, and an optional NOT mask. You will then be asked to provide some parameters, some decent starting default options are provided in the image 'tractography_params.png'. Once completed, you can load these tracts in ExploreDTI by clicking Data/ Load fiber tracts, then opening Palette/ Draw and then clicking 'Analyse Tracts' and finally 'Draw Tracts'. More information on ExploreDTI can be found in the manual, located [here](http://www.exploredti.com/manual/Manual_ExploreDTI.pdf). 
+
+
+## Conduct Probabilistic Tractography
+
+
+
+
+
+
