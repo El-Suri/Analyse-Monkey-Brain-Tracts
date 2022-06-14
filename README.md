@@ -1,4 +1,4 @@
-I still havne't gotten around to putting all the scripts on here since I have published the associated paper: 10.1016/j.neuroimage.2022.119096 
+I still haven't gotten around to putting all the scripts on here since I have published the associated paper: 10.1016/j.neuroimage.2022.119096 
 If anyone needs the files/ data as suggested in the paper please contact me and I will give you the finished versions/ finally update this repo. 
 
 # Analyse Monkey Brain Tracts
